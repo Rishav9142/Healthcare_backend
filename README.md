@@ -33,10 +33,28 @@ and patient-doctor assignments.
    Set `DJANGO_SECRET_KEY` to a generated secret and update the `DB_*` values.
    The `.env` file is excluded from Git.
 
-4. Once the API and data models are added, apply migrations and start the
-   development server:
+4. Apply migrations and start the development server:
 
    ```powershell
    python manage.py migrate
    python manage.py runserver
    ```
+
+## Authentication
+
+- `POST /api/auth/register/` — register with `name`, `email`, and `password`.
+- `POST /api/auth/login/` — submit `email` and `password` to receive `access`
+  and `refresh` JWTs.
+
+Use the access token on protected API requests:
+
+```http
+Authorization: Bearer <access-token>
+```
+
+Run the authentication tests with the SQLite test settings (no local PostgreSQL
+service is needed for these tests):
+
+```powershell
+python manage.py test accounts --settings=healthcare.test_settings
+```

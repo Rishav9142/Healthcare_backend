@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "healthcare.wsgi.application"
 ASGI_APPLICATION = "healthcare.asgi.application"
+AUTH_USER_MODEL = "accounts.User"
 
 DATABASES = {
     "default": {
